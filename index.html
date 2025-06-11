@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>PKG Food  and Beverages</title>
+  <title>PKG Foods and Beverages</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="assets/img/logo/pkg logo_new.p" rel="icon">
+  <link href="assets/img/logo/pkg logo_new.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -44,21 +44,22 @@
     <div class="container position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <img src="./assets/img/pkg remove.png"" alt="PKG Foods Logo" class="img-fluid"
+        <img src="./assets/img/pkg remove.png" alt="PKG Foods Logo" class="img-fluid"
           style="max-height: 100px; object-fit: contain;">
         <h1 class="sitename" style="color: rgb(85, 134, 85);">
-          PKG Food  & Beverage <br>Enterprises LLP
+          PKG Foods & Beverage <br>Enterprises LLP
         </h1>
-      </a> 
+      </a>
 
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home<br></a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#" id="nav-about">About</a></li>
+          <li><a href="#" id="nav-foods">Foods</a></li>
+
           <!-- <li><a href="#menu">Menu</a></li> -->
           <!-- <li><a href="#events">Events</a></li> -->
-          <li><a href="#chefs">Food</a></li>
           <li><a href="#gallery">Beverage</a></li>
 
           <li><a href="#contact">Contact</a></li>
@@ -105,13 +106,15 @@
               style="max-height: 250px; object-fit: cover;">
             <p><span style="color: rgb(103, 103, 224); font-weight: bold;"> Founder <br>Mr.MANAS CHANDA</p>
           </div>
+
         </div>
       </div>
     </section>
+
     <!-- /Hero Section -->
 
     <!-- About Section -->
-    <!-- <section id="about" class="about section">
+    <section id="about" class="about section">
       <div class="container section-title" data-aos="fade-up">
         <h2>About Us<br></h2>
         <p><span>Learn More</span> <span class="description-title">About Us</span></p>
@@ -161,16 +164,21 @@
 
       </div>
 
-    </section> -->
-    <!-- /About Section -->
+    </section>
 
+    <!-- /About Section -->
+<!----Foods section-->
+
+
+<!----Foods section-->
+<!----Foods  end section-->
     <!-- Why Us Section -->
     <!-- <section id="why-us" class="why-us section light-background">
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="why-box">
-               <h3>Why Choose PKG</h3>
+              <h3>Why Choose PKG</h3>
               <p>
                 At PKG FOOD & BEVERAGE ENTERPRISES LLP, we don’t just produce beverages — we craft experiences. Since
                 2016, we've built a reputation for delivering consistently high-quality, refreshing, and affordable
@@ -212,10 +220,14 @@
                     India.</p>
                 </div>
               </div>
+
             </div>
           </div>
+
         </div>
+
       </div>
+
     </section> -->
 
     <!-- /Why Us Section -->
@@ -630,7 +642,7 @@
         <h2>Enquiry Form</h2>
         <form>
           <input type="text" placeholder="Your Name" required>
-        <input type="number" placeholder="Mobile  Number" required>
+          <input type="number" placeholder="Mobile  Number" required>
           <input type="email" placeholder="Your Email" required>
           <textarea placeholder="Your Message" rows="4" required></textarea>
           <button type="submit">Submit</button>
@@ -716,6 +728,16 @@
           opacity: 1;
           transform: scale(1);
         }
+      }
+
+
+      /*About us section custom css apply hree */
+      .about.section {
+        display: none;
+      }
+
+      .about.section.active {
+        display: block;
       }
     </STYle>
     <!-- Testimonials Section -->
@@ -1294,6 +1316,55 @@
     function closePopup() {
       document.getElementById("popup").style.display = "none";
     }
+
+    /*About us script section */
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const aboutSection = document.querySelector("#about");
+      const navAbout = document.querySelector("#nav-about");
+
+      navAbout.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Hide all other sections if needed
+        document.querySelectorAll("section").forEach(section => {
+          section.classList.remove("active");
+        });
+
+        // Show the About section
+        aboutSection.classList.add("active");
+
+        // Optional: Scroll to the section
+        aboutSection.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    /*Foods script*/
+    document.addEventListener("DOMContentLoaded", function () {
+      const aboutSection = document.querySelector("#about");
+      const navAbout = document.querySelector("#nav-about");
+      const navFoods = document.querySelector("#nav-foods");
+      const popup = document.querySelector("#popup");
+
+      // Show About section on click
+      navAbout.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelectorAll("section.section").forEach(sec => sec.classList.remove("active"));
+        aboutSection.classList.add("active");
+        aboutSection.scrollIntoView({ behavior: "smooth" });
+      });
+
+      // Show popup on Foods click
+      navFoods.addEventListener("click", function (e) {
+        e.preventDefault();
+        popup.classList.add("show");
+
+        // Hide after 3 seconds
+        setTimeout(() => {
+          popup.classList.remove("show");
+        }, 3000);
+      });
+    });
   </script>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
